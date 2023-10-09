@@ -72,12 +72,7 @@ const INITIAL_STATE: IProfileData = {
   },
 };
 const MENU = [
-  // {
-  //   label: "Setting",
-  //   icon: "/images/v5/Settings.png",
-  //   value: "/profile/setting",
-  //   type: "operation",
-  // },
+
   // {
   //   label: "My Parcels",
   //   icon: "/images/v5/MyParcels.png",
