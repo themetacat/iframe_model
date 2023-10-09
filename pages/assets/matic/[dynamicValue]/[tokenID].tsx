@@ -643,7 +643,7 @@ export default function Matic() {
         meta={meta}
         className={cn("", popUp === true ? style.page1 : style.page)}
       >
-        <HomePage />
+        {/* <HomePage /> */}
         {wearableType==='voxels'? (
           <div style={{ marginTop: "20px" }}>
             <VoxFiled />
@@ -657,7 +657,7 @@ export default function Matic() {
         {wearableType==='Other'||wearableType===null? (
           <>
             <div className={style.container}>
-              <div className={style.cont}>
+              {/* <div className={style.cont}>
                 <p className={style.idNum}>{title}</p>
                 <div style={{ display: "flex" }}>
                   <div onClick={handleCopyClick}>
@@ -689,7 +689,7 @@ export default function Matic() {
                 </div>
 
                 <p className={style.totalNum}>{dataInfo.length} Wearables</p>
-              </div>
+              </div> */}
               <div
                 className={cn(
                   "grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5",

@@ -11,6 +11,8 @@ body {
     width:65%;
     height: 500px;
     touch-action: none;
+    position: absolute;
+    left: 17%;
 }
 .btn{
     width: 100px;

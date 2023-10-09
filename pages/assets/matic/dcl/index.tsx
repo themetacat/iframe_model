@@ -449,58 +449,58 @@ if(router){
       // Set the scene's clear color
       scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
 
-      if (onClick) {
-        const lastPointerPosition = new BABYLON.Vector2();
-        let isDragging = false;
+      // if (onClick) {
+      //   const lastPointerPosition = new BABYLON.Vector2();
+      //   let isDragging = false;
 
-        scene.onPointerObservable.add(
-          (eventData) => {
-            switch (eventData.type) {
-              case BABYLON.PointerEventTypes.POINTERDOWN:
-                isDragging = false;
-                lastPointerPosition.set(
-                  eventData.event.clientX,
-                  eventData.event.clientY
-                );
-                break;
-              case BABYLON.PointerEventTypes.POINTERUP:
-                if (isDragging || eventData.event.button !== 0) return;
-                onClick(
-                  eventData.pickInfo?.hit && eventData.pickInfo.pickedMesh
-                );
-                // console.log(
-                //   eventData.pickInfo.pickedMesh,
-                //   "lllllllllllllllllllllll"
-                // );
-                if (eventData.pickInfo.pickedMesh) {
-                  let new_modelMesh = getRootParent(
-                    eventData.pickInfo.pickedMesh
-                  );
-                  if (new_modelMesh != modelMesh) {
-                    update_modelMesh(new_modelMesh);
-                    focus();
-                  }
-                }
-                break;
-              case BABYLON.PointerEventTypes.POINTERMOVE:
-                if (isDragging) break;
-                const distance = lastPointerPosition
-                  .subtract(
-                    new BABYLON.Vector2(
-                      eventData.event.clientX,
-                      eventData.event.clientY
-                    )
-                  )
-                  .length();
-                if (distance > 8) isDragging = true;
-                break;
-            }
-          },
-          BABYLON.PointerEventTypes.POINTERDOWN +
-            BABYLON.PointerEventTypes.POINTERUP +
-            BABYLON.PointerEventTypes.POINTERMOVE
-        );
-      }
+      //   scene.onPointerObservable.add(
+      //     (eventData) => {
+      //       switch (eventData.type) {
+      //         case BABYLON.PointerEventTypes.POINTERDOWN:
+      //           isDragging = false;
+      //           lastPointerPosition.set(
+      //             eventData.event.clientX,
+      //             eventData.event.clientY
+      //           );
+      //           break;
+      //         case BABYLON.PointerEventTypes.POINTERUP:
+      //           if (isDragging || eventData.event.button !== 0) return;
+      //           onClick(
+      //             eventData.pickInfo?.hit && eventData.pickInfo.pickedMesh
+      //           );
+      //           // console.log(
+      //           //   eventData.pickInfo.pickedMesh,
+      //           //   "lllllllllllllllllllllll"
+      //           // );
+      //           if (eventData.pickInfo.pickedMesh) {
+      //             let new_modelMesh = getRootParent(
+      //               eventData.pickInfo.pickedMesh
+      //             );
+      //             if (new_modelMesh != modelMesh) {
+      //               update_modelMesh(new_modelMesh);
+      //               focus();
+      //             }
+      //           }
+      //           break;
+      //         case BABYLON.PointerEventTypes.POINTERMOVE:
+      //           if (isDragging) break;
+      //           const distance = lastPointerPosition
+      //             .subtract(
+      //               new BABYLON.Vector2(
+      //                 eventData.event.clientX,
+      //                 eventData.event.clientY
+      //               )
+      //             )
+      //             .length();
+      //           if (distance > 8) isDragging = true;
+      //           break;
+      //       }
+      //     },
+      //     BABYLON.PointerEventTypes.POINTERDOWN +
+      //       BABYLON.PointerEventTypes.POINTERUP +
+      //       BABYLON.PointerEventTypes.POINTERMOVE
+      //   );
+      // }
 
       // 创建 ArcRotateCamera 相机
       const camera = new BABYLON.ArcRotateCamera(
@@ -2093,11 +2093,11 @@ modelList[modelMesh.hashValue] =false
   
 
     // canvas增加监听事件
-    canvas.addEventListener("wheel", onWheel);
-    canvas.addEventListener("dragover", onDragOver);
-    canvas.addEventListener("dragleave", onDragExit);
-    canvas.addEventListener("drop", onDrop);
-    canvas.classList.add("costumer");
+    // canvas.addEventListener("wheel", onWheel);
+    // canvas.addEventListener("dragover", onDragOver);
+    // canvas.addEventListener("dragleave", onDragExit);
+    // canvas.addEventListener("drop", onDrop);
+    // canvas.classList.add("costumer");
 
     const wearableElement = document.getElementById("yourWearableElementId");
 
@@ -2199,7 +2199,7 @@ modelList[modelMesh.hashValue] =false
         style={{ position: "relative", height: "90%", top: "5%" }}
       >
         <canvas id="renderCanvasDcl" className={style.canvas}></canvas>
-        <div style={{ position: "absolute", top: "10px" }}>
+        <div style={{ position: "absolute", top: "10px" ,display:"none"}}>
           <button className={style.btn} id="gizmo-position">
             Position
           </button>
@@ -2210,7 +2210,7 @@ modelList[modelMesh.hashValue] =false
             Scale
           </button>
         </div>
-        <div style={{ position: "absolute", right: "10px", top: "10px" }}>
+        <div style={{ position: "absolute", right: "10px", top: "10px" ,display:"none"}}>
           <div className="editor-field position">
             <label>Position</label>
             <div className="fields">

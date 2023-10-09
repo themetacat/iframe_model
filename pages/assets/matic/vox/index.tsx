@@ -546,56 +546,56 @@ const metaCatAtk = window.localStorage.getItem("METACAT_atk");
       // Set the scene's clear color
       scene.clearColor = new BABYLON.Color4(1, 1, 1, 1);
 
-      if (onClick) {
-        const lastPointerPosition = new BABYLON.Vector2();
-        let isDragging = false;
+      // if (onClick) {
+      //   const lastPointerPosition = new BABYLON.Vector2();
+      //   let isDragging = false;
 
-        scene.onPointerObservable.add(
-          (eventData) => {
-            switch (eventData.type) {
-              case BABYLON.PointerEventTypes.POINTERDOWN:
-                isDragging = false;
-                lastPointerPosition.set(
-                  eventData.event.clientX,
-                  eventData.event.clientY
-                );
-                break;
-              case BABYLON.PointerEventTypes.POINTERUP:
-                if (isDragging || eventData.event.button !== 0) return;
-                onClick(
-                  eventData.pickInfo?.hit && eventData.pickInfo.pickedMesh
-                );
+      //   scene.onPointerObservable.add(
+      //     (eventData) => {
+      //       switch (eventData.type) {
+      //         case BABYLON.PointerEventTypes.POINTERDOWN:
+      //           isDragging = false;
+      //           lastPointerPosition.set(
+      //             eventData.event.clientX,
+      //             eventData.event.clientY
+      //           );
+      //           break;
+      //         case BABYLON.PointerEventTypes.POINTERUP:
+      //           if (isDragging || eventData.event.button !== 0) return;
+      //           // onClick(
+      //           //   eventData.pickInfo?.hit && eventData.pickInfo.pickedMesh
+      //           // );
                
                 
-                if (eventData.pickInfo.pickedMesh) {
+      //           if (eventData.pickInfo.pickedMesh) {
                   
-                  if (voxMesh != eventData.pickInfo.pickedMesh) {
+      //             if (voxMesh != eventData.pickInfo.pickedMesh) {
                   
-                    // voxMesh = eventData.pickInfo.pickedMesh
-                    update_voxMesh(eventData.pickInfo.pickedMesh);
-                    focus();
-                  }
-                }
-                break;
-              case BABYLON.PointerEventTypes.POINTERMOVE:
-                if (isDragging) break;
-                const distance = lastPointerPosition
-                  .subtract(
-                    new BABYLON.Vector2(
-                      eventData.event.clientX,
-                      eventData.event.clientY
-                    )
-                  )
-                  .length();
-                if (distance > 8) isDragging = true;
-                break;
-            }
-          },
-          BABYLON.PointerEventTypes.POINTERDOWN +
-            BABYLON.PointerEventTypes.POINTERUP +
-            BABYLON.PointerEventTypes.POINTERMOVE
-        );
-      }
+      //               // voxMesh = eventData.pickInfo.pickedMesh
+      //               update_voxMesh(eventData.pickInfo.pickedMesh);
+      //               focus();
+      //             }
+      //           }
+      //           break;
+      //         case BABYLON.PointerEventTypes.POINTERMOVE:
+      //           if (isDragging) break;
+      //           const distance = lastPointerPosition
+      //             .subtract(
+      //               new BABYLON.Vector2(
+      //                 eventData.event.clientX,
+      //                 eventData.event.clientY
+      //               )
+      //             )
+      //             .length();
+      //           if (distance > 8) isDragging = true;
+      //           break;
+      //       }
+      //     },
+      //     BABYLON.PointerEventTypes.POINTERDOWN +
+      //       BABYLON.PointerEventTypes.POINTERUP +
+      //       BABYLON.PointerEventTypes.POINTERMOVE
+      //   );
+      // }
 
       // 创建 ArcRotateCamera 相机
       const camera = new BABYLON.ArcRotateCamera(
@@ -896,7 +896,7 @@ const metaCatAtk = window.localStorage.getItem("METACAT_atk");
       updatedCostume.attachments.push(attachmentInfo);
       attachmentId.current = uniqueId;
       const updatedCostumeD = { ...costume }; 
-setCostume(updatedCostumeD)
+      setCostume(updatedCostumeD)
       // const expandAttachments = true;
 
       // 调用api 更新Costume数据
@@ -1808,20 +1808,20 @@ const matches = regex.exec(attributesData[0]);
   
 
     // canvas增加监听事件
-    canvas.addEventListener("wheel", onWheel);
-    canvas.addEventListener("dragover", onDragOver);
-    canvas.addEventListener("dragleave", onDragExit);
-    canvas.addEventListener("drop", onDrop);
-    canvas.classList.add("costumer");
+    // canvas.addEventListener("wheel", onWheel);
+    // canvas.addEventListener("dragover", onDragOver);
+    // canvas.addEventListener("dragleave", onDragExit);
+    // canvas.addEventListener("drop", onDrop);
+    // canvas.classList.add("costumer");
 
     // 获取按钮元素
-    const deleteButton = document.getElementById("mesh_dispose");
-    const download_json_file = document.getElementById("download");
+    // const deleteButton = document.getElementById("mesh_dispose");
+    // const download_json_file = document.getElementById("download");
     // const up_load = document.getElementById('upload');
     // up_load.addEventListener('click', onLoadCostume);
 
     // 添加点击事件处理程序
-    deleteButton.addEventListener("click", dispose_mesh);
+    // deleteButton.addEventListener("click", dispose_mesh);
     // download_json_file.addEventListener("click", downloadCostume);
 
     engine.runRenderLoop(function () {
@@ -1910,12 +1910,12 @@ const matches = regex.exec(attributesData[0]);
         style={{ position: "relative", }}
       >
         <canvas id="renderCanvas" className={style.canvas}></canvas>
-        <div style={{ position: "absolute", top: "10px" }}>
+        <div style={{ position: "absolute", top: "10px" ,display:"none"}}>
           <button className={style.btn} id="gizmo-position">Position</button>
           <button className={style.btn} id="gizmo-rotation">Rotation</button>
           <button className={style.btn} id="gizmo-scale">Scale</button>
         </div>
-        <div style={{ position: "absolute", right: "10px", top: "10px" ,width:"30%"}}>
+        <div style={{ position: "absolute", right: "10px", top: "10px" ,width:"30%",display:"none"}}>
           <div className="editor-field position">
             <label>Position</label>
             <div className="fields">
@@ -1942,15 +1942,9 @@ const matches = regex.exec(attributesData[0]);
                     const inputElement = event.target as HTMLInputElement;
                   updatePosition("position", 1, inputElement.value);
                 }}
-                // onChange={(event) => {
-                //   console.log(event);
-                //   console.log(event.target.value,22);
-                  
-                //   updatePosition("position", 1, event.target.value);
-                // }}
+               
               />
-              {/* onInput="updatePosition('position', 1, this.value)"
-                        onChange="updatePosition('position', 1, this.value)"/> */}
+            
               <input
                 id="position[z]"
                 type="number"
@@ -1963,8 +1957,6 @@ const matches = regex.exec(attributesData[0]);
                 }}
                 onChange={onChangeEdiumZ}
               />
-              {/* onInput="updatePosition('position', 2, this.value)"
-                        onChange="updatePosition('position', 2, this.value)"/> */}
             </div>
           </div>
           <div className="editor-field rotation">
@@ -2052,8 +2044,7 @@ const matches = regex.exec(attributesData[0]);
           </div>
           <div>
             <button className={style.buton} id="mesh_dispose">Remove</button>
-            {/* <button className={style.buton} id="download">Download</button> */}
-            {/* <button className={style.buton} id="upload">Upload</button> */}
+            <button className={style.buton} id="upload">Upload</button>
           </div>
           <div id="wearable_list"></div>
         </div>
