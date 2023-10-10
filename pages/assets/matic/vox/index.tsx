@@ -1168,131 +1168,137 @@ pickResult.pickedMesh.material = emissiveMaterial;
       //     collection_name: "MetaCat",
       //   },
       // ];
-      const tokenboundAccount = window.localStorage.getItem('tokenboundAccount')
-        const detailHandleq = getBagsDetail(tokenboundAccount);
-        // console.log(detailHandleq);
-        detailHandleq.then((detailHandleItem)=>{
+
+
+
+//       const tokenboundAccount = window.localStorage.getItem('tokenboundAccount')
+//         const detailHandleq = getBagsDetail(tokenboundAccount);
+//         // console.log(detailHandleq);
+//         detailHandleq.then((detailHandleItem)=>{
             
-detailHandleItem.ownedNfts.forEach((item=>{
-    if (Object.keys(item?.metadata).length === 0) {
-        return;
-      }
-//  console.log(item.tokenUri.raw,3333123);1
- const typeData =item?.metadata?.image
-// console.log(typeData);
-const splitParts = typeData?.split("/");
-const desiredValue =splitParts? splitParts[splitParts?.length - 1]:null;
-const tokenUri = item.tokenUri.raw
-// console.log(tokenUri);
-// console.log(tokenUri.includes("https://peer.decentraland.org"),66666666666666);
-const attributesData = item.metadata.attributes
-?.filter(itemNum => itemNum.trait_type === 'vox')
-.map(itemNum => itemNum.value);
+// detailHandleItem.ownedNfts.forEach((item=>{
+//     if (Object.keys(item?.metadata).length === 0) {
+//         return;
+//       }
+// //  console.log(item.tokenUri.raw,3333123);1
+//  const typeData =item?.metadata?.image
+// // console.log(typeData);
+// const splitParts = typeData?.split("/");
+// const desiredValue =splitParts? splitParts[splitParts?.length - 1]:null;
+// const tokenUri = item.tokenUri.raw
+// // console.log(tokenUri);
+// // console.log(tokenUri.includes("https://peer.decentraland.org"),66666666666666);
+// const attributesData = item.metadata.attributes
+// ?.filter(itemNum => itemNum.trait_type === 'vox')
+// .map(itemNum => itemNum.value);
 
-// console.log(attributesData[0]);
-const regex = /\/w\/([a-f0-9]+)\/vox/;
-const matches = regex.exec(attributesData[0]);
-// console.log(matches[1])
- const newItem ={
-    "token_id":item.id.tokenId,
-    // "token_id":25,
-    "name":item.metadata.name,
-    "id":item.metadata.id,
-    "description":item.description,
-    "collection_address":item.contract.address,
-    "hash":tokenUri.includes("https://www.cryptovoxels.com")?desiredValue:null,
-    "image":item.metadata.image,
-    "gateway":item.tokenUri.gateway,
-    "voxHash":matches[1],
- }
+// // console.log(attributesData[0]);
+// const regex = /\/w\/([a-f0-9]+)\/vox/;
+// const matches = regex.exec(attributesData[0]);
+// // console.log(matches[1])
+//  const newItem ={
+//     "token_id":item.id.tokenId,
+//     // "token_id":25,
+//     "name":item.metadata.name,
+//     "id":item.metadata.id,
+//     "description":item.description,
+//     "collection_address":item.contract.address,
+//     "hash":tokenUri.includes("https://www.cryptovoxels.com")?desiredValue:null,
+//     "image":item.metadata.image,
+//     "gateway":item.tokenUri.gateway,
+//     "voxHash":matches[1],
+//  }
 
- if (tokenUri.includes("https://www.cryptovoxels.com")) {
-  collectibles.push(newItem)
-} 
+//  if (tokenUri.includes("https://www.cryptovoxels.com")) {
+//   collectibles.push(newItem)
+// } 
 
-// console.log(collectibles,33);
+// // console.log(collectibles,33);
 
-// console.log(item.metadata.image,34444444444);
-        // img.src=item.metadata.image
-        // img.alt = tooltip;
-// console.log(img.src,'-----------------');
+// // console.log(item.metadata.image,34444444444);
+//         // img.src=item.metadata.image
+//         // img.alt = tooltip;
+// // console.log(img.src,'-----------------');
 
-}))
+// }))
 
-// console.log(collectibles,444444);
+// // console.log(collectibles,444444);
 
 
       
-      const wearables = collectibles.map((wearable) => {
-        // console.log(wearable,'----==========');
+//       const wearables = collectibles.map((wearable) => {
+//         // console.log(wearable,'----==========');
         
-        const onDragStart = (event) => {
-          const dataTransfer = event.dataTransfer;
-          if (dataTransfer) {
-            dataTransfer.setData("text/plain", "boop");
-          }
-          event.stopImmediatePropagation();
-          if (event.target instanceof HTMLElement) {
-            event.target.className = "dragging-wearable";
-          }
-          // console.log(window,6363636);
-          // (window as any).droppedWearable = wearable;
-          windowVal['droppedWearable']= wearable
-          // window.droppedWearable = wearable;
-        //   setGetdroppedWearable(wearable)
-        };
+//         const onDragStart = (event) => {
+//           const dataTransfer = event.dataTransfer;
+//           if (dataTransfer) {
+//             dataTransfer.setData("text/plain", "boop");
+//           }
+//           event.stopImmediatePropagation();
+//           if (event.target instanceof HTMLElement) {
+//             event.target.className = "dragging-wearable";
+//           }
+//           // console.log(window,6363636);
+//           // (window as any).droppedWearable = wearable;
+//           windowVal['droppedWearable']= wearable
+//           // window.droppedWearable = wearable;
+//         //   setGetdroppedWearable(wearable)
+//         };
 
-        const onDragEnd = (event) => {
-          if (event.target instanceof HTMLElement) {
-            event.target.className = "draggable-wearable";
-          }
-        };
+//         const onDragEnd = (event) => {
+//           if (event.target instanceof HTMLElement) {
+//             event.target.className = "draggable-wearable";
+//           }
+//         };
 
-        let tooltip = `wearable #${wearable.id}`;
-        if (wearable.name) {
-          tooltip = wearable.name;
-          if (wearable.description) {
-            tooltip += `\n\n${wearable.description}`;
-          }
-        }
+//         let tooltip = `wearable #${wearable.id}`;
+//         if (wearable.name) {
+//           tooltip = wearable.name;
+//           if (wearable.description) {
+//             tooltip += `\n\n${wearable.description}`;
+//           }
+//         }
 
-        const li = document.createElement("li");
-        li.className = "draggable-wearable";
-        li.draggable = true;
-        li.title = tooltip;
-        li.addEventListener("dragstart", onDragStart);
-        li.addEventListener("dragend", onDragEnd);
+//         const li = document.createElement("li");
+//         li.className = "draggable-wearable";
+//         li.draggable = true;
+//         li.title = tooltip;
+//         li.addEventListener("dragstart", onDragStart);
+//         li.addEventListener("dragend", onDragEnd);
 
-        const img = document.createElement("img");
-        img.width = 94;
-        img.height = 94;
-        img.src = wearable.image;
-        // img.src = getWearableGIFUrl(wearable.token_id, wearable.name);
-        // img.src = 'https://wearables.crvox.com/910a5b27-374e-45cc-b68c-99baf909b8d4-cv-wearables-chinese-traditional-cloak-black-by-metacat.gif'
-        img.alt = tooltip;
+//         const img = document.createElement("img");
+//         img.width = 94;
+//         img.height = 94;
+//         img.src = wearable.image;
+//         // img.src = getWearableGIFUrl(wearable.token_id, wearable.name);
+//         // img.src = 'https://wearables.crvox.com/910a5b27-374e-45cc-b68c-99baf909b8d4-cv-wearables-chinese-traditional-cloak-black-by-metacat.gif'
+//         img.alt = tooltip;
 
-        const div = document.createElement("div");
-        div.textContent =
-          wearable.chain_id === 0 ? "(Off-chain)" : wearable.name;
-        li.appendChild(img);
-        li.appendChild(div);
-        return li;
-      });
+//         const div = document.createElement("div");
+//         div.textContent =
+//           wearable.chain_id === 0 ? "(Off-chain)" : wearable.name;
+//         li.appendChild(img);
+//         li.appendChild(div);
+//         return li;
+//       });
 
-      // const fragment = document.createDocumentFragment();
-      // const h3 = document.createElement("h3");
-      // h3.textContent = `Wearables Wearables Wearables`;
-      const div = document.getElementById("wearable_list");
-      // div.className = "column-header";
-      const ul = document.createElement("ul");
-      ul.className = "wearables-list";
-      wearables.forEach((li) => ul?.appendChild(li));
-      // fragment.appendChild(h3);
-      // div.appendChild(div);
-      div?.appendChild(ul);
+//       // const fragment = document.createDocumentFragment();
+//       // const h3 = document.createElement("h3");
+//       // h3.textContent = `Wearables Wearables Wearables`;
+//       const div = document.getElementById("wearable_list");
+//       // div.className = "column-header";
+//       const ul = document.createElement("ul");
+//       ul.className = "wearables-list";
+//       wearables.forEach((li) => ul?.appendChild(li));
+//       // fragment.appendChild(h3);
+//       // div.appendChild(div);
+//       div?.appendChild(ul);
 
-      // document.body.appendChild(fragment);
-    })
+//       // document.body.appendChild(fragment);
+//     })
+
+
+
     }
     renderWearables();
 

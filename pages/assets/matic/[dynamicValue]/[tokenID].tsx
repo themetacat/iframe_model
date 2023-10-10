@@ -241,7 +241,7 @@ export default function Matic() {
       });
 
       setTokenboundAccountNum(tokenboundAccount);
-      window.localStorage.setItem("tokenboundAccount", tokenboundAccount);
+      // window.localStorage.setItem("tokenboundAccount", tokenboundAccount);
       const truncatedAccount =
         `${tokenboundAccount}`.slice(0, 6) +
         "..." +
