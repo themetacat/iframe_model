@@ -14,8 +14,8 @@ import style from "./index.module.css";
 import DclCard from "../components/parcels-dcl-card";
 import store from "../store/profile";
 import TopNav from "../components/top-nav";
-import HomePage from "../components/home-page";
-import HomeTop from "../components/home-top";
+// import HomePage from "../components/home-page";
+// import HomeTop from "../components/home-top";
 import Card from "../components/parcels-card";
 import ParcelList from "../components/parcelList";
 import Tab3 from "../components/tab3";
@@ -294,7 +294,7 @@ useEffect(()=>{
       // {/* <WalletBtn /> */}
       // {/* <TopNav/> */}
       <>
-      <HomeTop/>
+      {/* <HomeTop/> */}
       </>
       // {/* <div className={cn("", style.parselist)}>
       //   <div className={cn(style.tableList)}>

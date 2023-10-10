@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState,forwardRef ,useRef} from "react";
 import cn from "classnames";
 import style from "./index.module.css";
-import HomePage from "../home-page";
+// import HomePage from "../home-page";
 import Router, { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
 
@@ -51,7 +51,7 @@ export default function TopNav() {
    
   return (
     <>
-    <HomePage ref={funRef}/>
+    {/* <HomePage ref={funRef}/> */}
     <div className={style.container}>
     <p>Pack Your Wearable.</p>
     <p  className={style.PBox}>UseERC-6551to package and sell your Wearables.</p>

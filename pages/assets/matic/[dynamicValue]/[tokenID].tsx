@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import HomePage from "../../../../components/home-page";
+// import HomePage from "../../../../components/home-page";
 import Page from "../../../../components/page";
 import { toast } from "react-hot-toast";
 import { SITE_NAME, META_DESCRIPTION } from "../../../../common/const";

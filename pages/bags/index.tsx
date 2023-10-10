@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import HomePage from "../../components/home-page";
+// import HomePage from "../../components/home-page";
 import Page from "../../components/page";
 import { TokenboundClient } from "@tokenbound/sdk";
 import { SITE_NAME, META_DESCRIPTION } from "../../common/const";
@@ -525,7 +525,7 @@ export default function Bags() {
 
   return (
     <Page meta={meta} className={cn("", style.page)}>
-      <HomePage />
+      {/* <HomePage /> */}
       <div className={style.container}>
         <p className={style.titleBox}>Bags</p>
         {dataInfoList === null ? (
