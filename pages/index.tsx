@@ -286,6 +286,8 @@ useEffect(()=>{
 
   
  
+// console.log(router);
+
 
   return (
     // <Page meta={meta} className={cn("", style.page)}>
